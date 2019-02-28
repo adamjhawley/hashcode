@@ -1,16 +1,15 @@
 import random
 from scorer import *
 
-def climb_hill(data, maxtries):
+def climb_hill(data, maxtries, hasV):
     gooddata = data[:]
     datalen = len(data) - 1
     score = sum(calc_score(gooddata))
     tries = 0
     while tries < maxtries:
-        print(tries)
         localdata = gooddata[:]
         tries += 1
-        if random.random() > 0.2:
+        if  hasV or random.random() > 0.2:
             i1 = random.randint(0,datalen)
             i2 = random.randint(0,datalen)
             (localdata[i1], localdata[i2]) = (localdata[i2], localdata[i1])

@@ -1,6 +1,5 @@
 # Takes a list of slides and returns the score for that slideshow
 def calc_score(slides):
-    print(len(slides))
     scores = []
     for i in range(1, len(slides)):
         scores.append(calc_transition_score(get_tags(slides[i - 1]),

@@ -5,7 +5,7 @@ from hill_climb import climb_hill
 def prep_slides(slides):
     output = []
     hs, vs = splitSlides(slides)
-    random.shuffle(vs)
+    print(random.shuffle(vs))
     vs = joinVs(vs)
     hs.extend(vs)
     random.shuffle(hs)
@@ -38,12 +38,13 @@ def main():
     inputs = parse_inputs("inputs/c_memorable_moments.txt")
     max_score = 0
     best_submission = []
-    for _ in range(100):
+    for _ in range(10):
         prep = prep_slides(inputs[:])
-        score, data = climb_hill(prep, 100)
+        score, data = climb_hill(prep, 100, True)
         if score > max_score:
             max_score = score
             best_submission = data
+    print(max_score)
     return (max_score, best_submission)
 
 
