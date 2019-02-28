@@ -1,5 +1,6 @@
 # Takes a list of slides and returns the score for that slideshow
 def calc_score(slides):
+    print(len(slides))
     scores = []
     for i in range(1, len(slides)):
         scores.append(calc_transition_score(get_tags(slides[i - 1]),
@@ -26,6 +27,11 @@ def calc_transition_score(left, right):
 # Gets the tags from a slide, vertical or horizontal
 def get_tags(slide):
     if type(slide) is tuple:
-        return slide[0].tags.extend(slide[1].tags)
+        tags_out = slide[0].tags
+        for tag in slide[1].tags:
+            if tag not in tags_out:
+                tags_out.append(tag)
+        return tags_out
+
     else:
         return slide.tags
