@@ -1,7 +1,8 @@
 import random
 from parser import parse_inputs
+from hill_climb import climb_hill
 
-def main(slides):
+def prep_slides(slides):
     output = []
     hs, vs = splitSlides(slides)
     random.shuffle(vs)
@@ -33,4 +34,20 @@ def joinVs(verts):
 
     return output
 
-print(main(parse_inputs("inputs/a_example.txt")))
+def main():
+    inputs = parse_inputs("inputs/a_example.txt")
+    max_score = 0
+    best_submission = []
+    for _ in range(100):
+        prep = prep_slides(inputs[:])
+        score, data = climb_hill(prep, 100)
+        if score > max_score:
+            max_score = score
+            best_submission = data
+    return (max_score, best_submission)
+
+
+
+if __name__ == "__main__":
+    print(prep_slides(parse_inputs("inputs/a_example.txt")))
+
