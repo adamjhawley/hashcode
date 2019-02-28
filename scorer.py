@@ -1,3 +1,12 @@
+# Takes a list of slides and returns the score for that slideshow and a list
+# for the scores between individual slides
+def calc_score(slides):
+    scores = []
+    for i in range(1, len(slides)):
+        scores.append(calc_transtion_score(slides[i - 1], slides[i]))
+    return(scores)
+
+
 # Takes two slides and returns the score between them
 def calc_transition_score(s1, s2):
     left = s1.tags
