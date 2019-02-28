@@ -30,12 +30,12 @@ def joinVs(verts):
     output = []
     for n, i in enumerate(verts):
         if n%2:
-            output.append((verts[n-1], verts[n]))
+            output.append([verts[n-1], verts[n]])
 
     return output
 
 def main():
-    inputs = parse_inputs("inputs/a_example.txt")
+    inputs = parse_inputs("inputs/b_lovely_landscapes.txt")
     max_score = 0
     best_submission = []
     for _ in range(100):
@@ -49,5 +49,5 @@ def main():
 
 
 if __name__ == "__main__":
-    print(prep_slides(parse_inputs("inputs/a_example.txt")))
+    main()
 

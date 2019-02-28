@@ -26,7 +26,7 @@ def calc_transition_score(left, right):
 
 # Gets the tags from a slide, vertical or horizontal
 def get_tags(slide):
-    if type(slide) is tuple:
+    if type(slide) is list:
         tags_out = slide[0].tags
         for tag in slide[1].tags:
             if tag not in tags_out:
