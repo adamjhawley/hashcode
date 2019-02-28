@@ -35,7 +35,7 @@ def joinVs(verts):
     return output
 
 def main():
-    inputs = parse_inputs("inputs/b_lovely_landscapes.txt")
+    inputs = parse_inputs("inputs/c_memorable_moments.txt")
     max_score = 0
     best_submission = []
     for _ in range(100):

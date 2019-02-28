@@ -6,7 +6,6 @@ def climb_hill(data, maxtries):
     datalen = len(data) - 1
     score = sum(calc_score(gooddata))
     tries = 0
-    print(gooddata)
     while tries < maxtries:
         print(tries)
         localdata = gooddata[:]
