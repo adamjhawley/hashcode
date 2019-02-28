@@ -3,12 +3,12 @@ from parser import parse_inputs
 
 def main(slides):
     output = []
-    hs, vs = splitSlides(slides) 
+    hs, vs = splitSlides(slides)
     random.shuffle(vs)
     vs = joinVs(vs)
-    output = hs + vs
-    random.shuffle(output)
-    return output
+    hs.extend(vs)
+    random.shuffle(hs)
+    return hs
 
 def findNextVertical(slides, index):
     for i in range(index, len(slides)-1):
@@ -20,15 +20,16 @@ def splitSlides(slides):
     vs = []
     for i in slides:
         if i.orientation == "H":
-            hs += i
+            hs.append(i)
         else:
-            vs += i
+            vs.append(i)
     return (hs,vs)
 
 def joinVs(verts):
     output = []
-    for i in range((len(verts)-1)/2):
-        output += (verts[i], verts[i*2])
+    for n, i in enumerate(verts):
+        if n%2:
+            output.append((verts[n-1], verts[n]))
 
     return output
 
